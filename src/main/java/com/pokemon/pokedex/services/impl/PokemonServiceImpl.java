@@ -30,5 +30,19 @@ public class PokemonServiceImpl implements PokemonService {
         repository.save(pokemon);
         return new ResponseEntity<>(pokemon,HttpStatus.CREATED);
     }
+
+    @Override
+    public ResponseEntity<Pokemon> updatePokemon(long id, Pokemon pokemon) {
+        Pokemon pokemonForUpdate = repository.findById(id).get();
+        pokemonForUpdate.setName(pokemon.getName());
+        pokemonForUpdate.setRegiao(pokemon.getRegiao());
+        pokemonForUpdate.setFirstType(pokemon.getFirstType());
+        pokemonForUpdate.setSecondType(pokemon.getSecondType());
+
+        repository.save(pokemonForUpdate);
+        return new ResponseEntity<>(pokemonForUpdate,HttpStatus.ACCEPTED);
+
+    
+    }
     
 }

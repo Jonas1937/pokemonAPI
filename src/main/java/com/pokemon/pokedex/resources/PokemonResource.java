@@ -8,8 +8,10 @@ import com.pokemon.pokedex.services.PokemonService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -30,5 +32,10 @@ public class PokemonResource {
     @PostMapping("/pokemons")
     public ResponseEntity<Pokemon> createNewPokemon(@RequestBody Pokemon pokemon){
         return service.createNewPokemon(pokemon);
+    }
+
+    @PutMapping("/pokemons/")
+    public ResponseEntity<Pokemon> updatePokemon(@RequestParam long id, @RequestBody Pokemon pokemon){
+        return service.updatePokemon(id, pokemon);
     }
 }

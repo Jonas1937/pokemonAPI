@@ -11,4 +11,7 @@ public interface PokemonService {
     public ResponseEntity<List<Pokemon>> listAll();
 
     public ResponseEntity<Pokemon> createNewPokemon(Pokemon pokemon);
+
+    public ResponseEntity<Pokemon> updatePokemon(long id, Pokemon pokemon);
+
 }
